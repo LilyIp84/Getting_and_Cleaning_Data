@@ -1,8 +1,9 @@
 # Getting_and_Cleaning_Data
 ## Assignment
 The goal is to prepare tidy data that can be used for later analysis.
-The run.analysis_R script will achieve the following:
-1. Merges the training and the test sets to create one data set.
+The run.analysis_R script will achieve the following.
+
+1.Merges the training and the test sets to create one data set.
 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
 3. Uses descriptive activity names to name the activities in the data set
 4. Appropriately labels the data set with descriptive variable names. 
