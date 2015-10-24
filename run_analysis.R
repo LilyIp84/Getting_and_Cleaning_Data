@@ -68,4 +68,4 @@ tidy[,4] = NULL
 tidy[,3] = NULL
 
 ## Write the tidy data set into a text file
-write.table(tidy, "tidy.txt", sep="\t")
+write.table(tidy, "tidy.txt", sep="\t", row.names = FALSE)
