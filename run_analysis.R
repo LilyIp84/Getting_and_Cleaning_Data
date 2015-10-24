@@ -13,6 +13,7 @@ testSubject <- read.table("./test/subject_test.txt")
 features <- read.table("features.txt")
 features <- features[[2]]
 activityLabel <- read.table("activity_labels.txt")
+activityLabel <- activityLabel[[2]]
 
 allObservations <- rbind(trainData, testData)
 
