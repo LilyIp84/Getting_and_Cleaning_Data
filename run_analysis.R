@@ -51,9 +51,21 @@ colnames(allSubjects) <- "activityID"
 allSubjects <- join(allSubjects, activityLabel, by = "activityID")
 allSubjects <- allSubjects$activityName
 
-## Add processed labels and subjects to all Observations
-allObservations <- cbind(allObservations, allLabels, allSubjects)
+## Add processed labels to all Observations
+allObservations <- cbind(allLabels, allSubjects, allObservations)
 
 ##clean up Label and subject column names
-colnames(allObservations)[80] <- "Labels"
-colnames(allObservations)[81] <- "Subjects"
+colnames(allObservations)[1] <- "Labels"
+
+colnames(allObservations)[2] <- "Subjects"
+
+##Derive a tidy data set with the average of each variable for each activity and each subject
+
+tidy = aggregate(allObservations, by=list(Label = allObservations$Labels, 
+                                          Subjects=allObservations$Subjects), mean)
+##remove the additional Label and Subject column as it adds no value
+tidy[,4] = NULL
+tidy[,3] = NULL
+
+## Write the tidy data set into a text file
+write.table(tidy, "tidy.txt", sep="\t")
