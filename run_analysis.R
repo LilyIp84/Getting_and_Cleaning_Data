@@ -17,7 +17,7 @@ activityLabel <- activityLabel[[2]]
 
 allObservations <- rbind(trainData, testData)
 
-##Add features as column anmes for allObservations
+##Add features as column names for allObservations
 colnames(allObservations) <- features
 
 
