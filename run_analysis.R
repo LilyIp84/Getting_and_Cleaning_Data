@@ -31,12 +31,11 @@ trainData <- trainData[,grep("mean|std",features)]
 testData<- testData[,grep("mean|std",features)]
 
 ##Join all train data together and join all test data together
-train <- cbind(trainData, trainLabel, trainSubject)
-test <- cbind(testData, testLabel, testSubject)
+##train <- cbind(trainData, trainLabel, trainSubject)
+##test <- cbind(testData, testLabel, testSubject)
 
 ## merge train and test data
-allObservations <- rbind(train, test)
-
+allObservations <- rbind(trainData, testData)
 
 ##Join the training and test labels and join the activity names to them.
 colnames(activityLabel) <- c("activityID", "activityName")
@@ -44,5 +43,17 @@ allLabels <- rbind(trainLabel, testLabel)
 colnames(allLabels) <- "activityID"
 
 allLabels <- join(allLabels, activityLabel, by = "activityID")
+allLabels <- allLabels$activityName
 
+##Join the training and test subjects and join the activity names to them.
+allSubjects <- rbind(trainSubject, testSubject)
+colnames(allSubjects) <- "activityID"
+allSubjects <- join(allSubjects, activityLabel, by = "activityID")
+allSubjects <- allSubjects$activityName
 
+## Add processed labels and subjects to all Observations
+allObservations <- cbind(allObservations, allLabels, allSubjects)
+
+##clean up Label and subject column names
+colnames(allObservations)[80] <- "Labels"
+colnames(allObservations)[81] <- "Subjects"
