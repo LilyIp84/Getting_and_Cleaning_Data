@@ -4,10 +4,19 @@ The data is obtained from http://archive.ics.uci.edu/ml/datasets/Human+Activity+
 
 ##Variables
 trainData = training data
+
 trainLabel = training label
+
 trainSubject = training subject
+
 testData = test data
+
 testLabel = test label
+
 testSubject = test subject
+
 features = features
+
 activityLabel = activity labels
+
+allObservations = joined dataset between test and training data filtered to contain only mean and standard deviation
